@@ -17,7 +17,22 @@ let winningTickets = [
    window.onload = init;
 
    function init(){
+       loadWinningTicketsTable();
+   }
 
-    loadWinningTicketsTable();
+   function loadWinningTicketsTable(){
+       let tbody = document.getElementById("winningTicketsTblBody");
+       for (let i = 0; i < winningTickets.length; i++){
+           buildTicketRow(tbody, winningTickets[i]);
+       }
+   }
 
+   function buildTicketRow(tbody, theTicket){
+       let row = tbody.insertRow(-1);
+       let cell1 = row.insertCell(0);
+       cell1.innerHTML = theTicket.tixNum;
+       let cell2 = row.insertCell(1);
+       cell2.innerHTML = theTicket.prize.toFixed(2);
+       let cell3 = row.insertCell(2);
+       cell3.innerHTML = theTicket.expires;
    }
